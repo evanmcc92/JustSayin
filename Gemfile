@@ -48,3 +48,5 @@ gem "twitter-bootstrap-rails"
 # To use ActiveModel has_secure_password
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'protected_attributes'
+
+gem 'newrelic_rpm'

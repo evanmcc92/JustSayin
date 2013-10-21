@@ -60,6 +60,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.1)
+    newrelic_rpm (3.6.7.159)
     pg (0.15.1)
     polyglot (0.3.3)
     protected_attributes (1.0.3)
@@ -138,6 +139,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   less-rails
+  newrelic_rpm
   pg (= 0.15.1)
   protected_attributes
   rails (= 4.0.0)
