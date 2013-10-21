@@ -1,4 +1,18 @@
 SocialLiving::Application.routes.draw do
+  root :to => 'browse#home'
+  get "browse/profile"
+  get "browse/message"
+  get "browse/aboutus"
+
+  #Sessions Users
+  get "logout_user" => "sessions#destroy", :as => "logout_user"
+  post "login_user" => "sessions#new", :as => "login_user"
+
+  #Users
+  get "signup" => "users#new", :as => "signup"
+
+  resources :users
+  resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
