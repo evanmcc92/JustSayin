@@ -1,37 +1,28 @@
-<% form_for(@user) do |f| %>
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> in creating an Account: </h2>
+        <ul>
+        <% @user.errors.each do |attr,msg| %>
+          <li><%= attr %> | <%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p><%= f.label :first_name %>
+    <%= f.text_field :first_name %></p>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> in creating an Account: </h2>
-      <ul>
-      <% @user.errors.each do |attr,msg| %>
-        <li><%= attr %> | <%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <p><%= f.label :last_name %>
+    <%= f.text_field :last_name %></p>
 
-  <p>
-    <%= f.label :first_name, "First Name" %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name, "Last Name" %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :email, "Email" %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password, "Password" %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <p><%= f.label :email %>
+    <%= f.text_field :email %></p>
+
+    <p><%= f.label :password %>
+    <%= f.password_field :password %></p>
+
+    <p><%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %><br /></p>
+
+    <p><%= f.submit "Create my account", class: "btn btn-large btn-primary" %></p>
 <% end %>
