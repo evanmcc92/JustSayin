@@ -1,4 +1,4 @@
-<%= nav_bar :fixed => :top, :brand => "SocialLiving", :brand_link => "/" do %>
+<%= nav_bar :fixed => :top, :brand => "GymingIt", :brand_link => "/" do %>
     <% menu_group :pull => :right do %>
         <% if current_user %>
             <%= menu_item "Home", root_path %>
@@ -7,7 +7,7 @@
             <%= drop_down "Settings" do %>
                 <%= menu_item "My Profile"%>
                 <%= menu_item "Account Settings"%>
-                <%= menu_divider %>
+                <%= drop_down_divider %>
                 <%= menu_item "Log Out", logout_user_path %>
             <% end %>
         <% else %>
