@@ -1,0 +1,22 @@
+<% if post_streams_path.empty? %>
+  <h3> No posts just yet, be patient </h3>
+<% else %>
+  <% post_streams_path do |post| %>
+    <div class="postbody"> 
+      <div class="votebox">
+        <a href="" id="<%= post.id %>" name="up" class="votes">
+        <div class='up'></div><%= post.ups %> likes</a>
+        <a href=""  id="<%= post.id %>"  name="down" class="votes">
+        <div class='down'></div><%= post.downs %> dislikes</a>
+      </div>
+      <div class="posttext">
+        <blockquote>
+          <small><%= post.created_at %></small>
+          <p><%= post.post %></p>
+          <small><%= post.posted_by %></small>
+        </blockquote>
+      </div> 
+    </div>
+  <% end %>
+<% end %>
+    
