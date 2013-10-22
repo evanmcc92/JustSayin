@@ -1,17 +1,17 @@
 <%= nav_bar :fixed => :top, :brand => "GymingIt", :brand_link => "/" do %>
     <% menu_group :pull => :right do %>
         <% if current_user %>
-            <%= menu_item "Home", root_path %>
-            <%= menu_item "Messages" %>
-            <%= menu_item "Friends" %>
-            <%= drop_down "Settings" do %>
-                <%= menu_item "My Profile"%>
-                <%= menu_item "Account Settings"%>
+            <%= menu_item " Home", root_path, {:class => "icon-home"} %>
+            <%= menu_item " Messages" %>
+            <%= menu_item " Friends" %>
+            <%= drop_down " Settings" do %>
+                <%= menu_item " My Profile"%>
+                <%= menu_item " Account Settings" %>
                 <%= drop_down_divider %>
-                <%= menu_item "Log Out", logout_user_path %>
+                <%= menu_item " Log Out", logout_user_path, {:class => "icon-off"}  %>
             <% end %>
         <% else %>
-            <%= menu_item "About Us", browse_aboutus_path %>
+            <!-- <%= menu_item "About Us", browse_aboutus_path %> -->
             <%= menu_item "Sign Up/Login", signup_path %>
         <% end %>
     <% end %>
