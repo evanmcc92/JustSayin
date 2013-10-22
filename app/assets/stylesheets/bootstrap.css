@@ -6124,7 +6124,7 @@ a.badge:focus {
   font-weight: 200;
   line-height: 30px;
   color: inherit;
-  background: url("<%= asset_data_uri 'hero-background.jpg' %>");
+  background-color: #eeeeee;
   background-repeat: no-repeat;
   background-size: 100%;
   height: 150px;

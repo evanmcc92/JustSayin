@@ -5,11 +5,21 @@
 				<p id="copy">&copy; Copyright GymingIt 2013</p>
 			</div>
 			<div class="span3 offset6">
-				<p>Want to join?</p>
-				<p><%= link_to "Signup Here", signup_path %></p>
+				<p>Want to Join?</p>
+				<%= render "signupmodal" %>
 				<p>Already a member?</p>
-				<p><%= link_to "Login Here", signup_path %></p>
+				<%= render "loginmodal" %>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<script>
+   $('#loginclick').click(function(){
+    $('#login').modal('show')
+   });
+   $('#signupclick').click(function(){
+    $('#signup').modal('show')
+   });
+</script>

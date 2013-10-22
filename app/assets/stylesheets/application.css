@@ -12,10 +12,12 @@
  *= require_tree .
  */
 
-
+.hero-unit {
+	background-image: url('hero-background.jpg')
+}
 .body {
 	margin-top: 4em;
-	margin-bottom: 2em;
+	margin-bottom: 4em;
 	width: 940px;
 	margin-left: auto;
 	margin-right: auto;
@@ -27,3 +29,4 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
