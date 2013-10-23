@@ -1,45 +1,4 @@
 <%= render "header" %>
 <div class="body">
-	<% if current_user %>
-		<%= render 'posts/new' %>
-		<%= render 'posts', :locals => { :post_streams => @post_streams } %>
-	<% end %>
-
-	<script>
-	  $(document).ready(function(){
-	  var timelyrefreshPostFeeds = function(){
-	  url = '/refresh'
-	  $.get(url,function(data,status){
-	   $('#postfeed').html(data)
-	   return false
-	   });
-	  };
-	  setInterval(timelyrefreshPostFeeds,60000);
-
-	   $(".votes").click(function()
-	  {
-	    var id = $(this).attr("id");
-	    var name = $(this).attr("name");
-	    var parent = $(this)
-	          if (name=='up')
-	         {
-	              
-
-	              $.get('/votedup', {id: id},
-	                   function(data,status){
-	                   parent.html(data);
-	                                          });
-	         }
-	         else
-	        {
-	             $.get('/voteddown', {id: id},
-	                   function(data,status){
-	                   parent.html(data);
-	                                          });
-	        }
-	   return false;
-	  });
-
-	  });
-	</script>
 </div>
+<%= render "footer" %>
