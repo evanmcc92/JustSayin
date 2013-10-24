@@ -26,4 +26,25 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+#error_explanation {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+#error_explanation li {
+    list-style-type: none;
+}
+#success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+#success, #error_explanation {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+		-webkit-border-radius:.5em;
+    	-moz-border-radius:.5em;
+		border-radius:.5em;
+
 

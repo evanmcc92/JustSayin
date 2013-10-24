@@ -2,7 +2,7 @@
 <% provide(:title, "Edit user") %>
 <div class="body">
 	<h1>Update Your Profile</h1>
-	<% if flash[:success] %><div class="success"><h3><%= flash[:success] %></h3></div><% end %>
+	<% if flash[:success] %><div id="success"><h3><%= flash[:success] %></h3></div><% end %>
 	<% if @user.errors.any? %>
       <div id="error_explanation">
         <h3>Oops! <%= pluralize(@user.errors.count, "error") %> in Updating Your Account:</h3>
