@@ -8,6 +8,7 @@ SocialLiving::Application.routes.draw do
   get "users/edit"
   get "users/destroy"
   get "users/update"
+  get "users/show"
   
   #Sessions Users
   get "logout_user" => "sessions#destroy", :as => "logout_user"

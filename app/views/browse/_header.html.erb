@@ -1,13 +1,12 @@
 <%= nav_bar :fixed => :top, :brand => "TheGym", :brand_link => "/" do %>
     <% menu_group :pull => :right do %>
         <% if current_user %>
-            <%=menu_item  current_user.first_name %>
-            <%= menu_item " Home", root_path, {:class => "icon-home"} %>
-            <%= menu_item " Messages" %>
-            <%= menu_item " Friends" %>
+            <%= menu_item " " + current_user.first_name, root_path, {:class => "icon-home"} %>
+            <%= menu_item " Messages", "#",  {:class => "icon-comment"} %>
+            <%= menu_item " Friends", "#",  {:class => "icon-user"} %>
             <%= drop_down " Settings" do %>
-                <%= menu_item " My Profile"%>
-                <%= menu_item " Account Settings", edit_user_path(current_user) %>
+                <%= menu_item " My Profile", user_path(current_user), {:class => "icon-wrench"} %>
+                <%= menu_item " Account Settings", edit_user_path(current_user), {:class => "icon-cog"} %>
                 <%= drop_down_divider %>
                 <%= menu_item " Log Out", logout_user_path, {:class => "icon-off"}  %>
             <% end %>

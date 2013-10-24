@@ -1,11 +1,11 @@
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> in creating an Account: </h2>
+        <h3>Oops! <%= pluralize(@user.errors.count, "Error") %> in Creating Your Account:</h3>
         <ul>
-        <% @user.errors.each do |attr,msg| %>
-          <li><%= attr %> | <%= msg %></li>
-        <% end %>
+            <% @user.errors.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
         </ul>
       </div>
     <% end %>
