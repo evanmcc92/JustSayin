@@ -1,0 +1,23 @@
+<%= render "browse/header" %>
+<% provide(:title, "Edit user") %>
+<div class="body">
+	<h1>Update Your Profile</h1>
+	<%= form_for :current_user do |f| %>
+		<p><%= f.label :first_name %>
+		<%= f.text_field :first_name %></p>
+
+		<p><%= f.label :last_name %>
+		<%= f.text_field :last_name %></p>
+
+		<p><%= f.label :email %>
+		<%= f.text_field :email %></p>
+
+		<!--<p><%= f.label :password %>
+		<%= f.password_field :password %></p>
+
+		<p><%= f.label :password_confirmation, "Confirmation" %>
+		<%= f.password_field :password_confirmation %><br /></p>-->
+
+		<p><%= f.submit "Save Changes", class: "btn btn-large btn-primary" %></p>
+    <% end %>
+</div>
