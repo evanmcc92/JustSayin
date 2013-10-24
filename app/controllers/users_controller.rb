@@ -14,20 +14,22 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = :current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = :current_user
-    respond_to do |format|
-      if @user.update(params[:current_user])
-        format.html { redirect_to root_url, flash[:notice] = SUCCESSFUL_REGISTRATION_UPDATE_MSG }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-     end
+    @user = User.find(params[:id])
+    # required for settings form to submit when password is left blank
+    if params[:user][:password].blank?
+      params[:user].delete("password")
+      params[:user].delete("password_confirmation")
+    end
+
+    if @user.update_attributes(params[:user])
+      redirect_to edit_user_path(@user), :flash => {:success => "You've Successful Updated Your Account!"}
+    else
+      render "edit"
+    end
   end
 
   def destroy

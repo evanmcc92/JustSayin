@@ -5,7 +5,7 @@ SocialLiving::Application.routes.draw do
   get "browse/message"
   get "browse/aboutus"
   get "users/new"
-  post "users/edit"
+  get "users/edit"
   get "users/destroy"
   get "users/update"
   
