@@ -1,5 +1,7 @@
 SocialLiving::Application.routes.draw do
   
+  get "relationships/create"
+  get "relationships/destroy"
   root :to => 'browse#home'
   get "browse/profile"
   get "browse/message"
@@ -17,7 +19,11 @@ SocialLiving::Application.routes.draw do
   #Users
   get "signup" => "users#new", :as => "signup"
   
-  resources :users
+  resources :users do
+      member do
+          get :following, :followers
+      end
+  end
   resources :sessions
   resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.

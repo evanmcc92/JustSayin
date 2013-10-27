@@ -1,2 +1,1 @@
-<%=  link_to "#{@user.followers.count} Followers", "#" %>  | <%=  link_to "#{@user.followed_users.count} Following", "#" %></p>
-			
+<%=  link_to "#{@user.followers.count} Followers", followers_user_path(current_user) %>  | <%=  link_to "#{@user.followed_users.count} Following", following_user_path(current_user) %>

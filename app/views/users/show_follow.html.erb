@@ -2,13 +2,13 @@
 <% @user ||= current_user %>
 <div class="body">
 	<div class="right">
-		<div id="my_posts">
-			<h4>My Posts</h4>
-			<blockquote class="posts">
-				<h5>Poster, Post time</h5>
-				<p>Post text</p>
-				<h6>like, dislike, comment</h6>
-			</blockquote>
+	<div id="my_posts">
+		 	<h3><%= @title %></h3>
+			<% if @users.any? %>
+		    	<ul class="users">
+		    		<%= render @users %>
+		    	</ul>
+			<% end %>
 		</div>
 	</div>
 	<div class="left">
