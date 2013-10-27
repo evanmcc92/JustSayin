@@ -53,3 +53,4 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem 'protected_attributes'
 
 gem 'newrelic_rpm'
+gem 'bootstrap-wysihtml5-rails'

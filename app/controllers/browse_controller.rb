@@ -1,6 +1,6 @@
 class BrowseController < ApplicationController
-  def home
-  end
+    def home
+    end
 
   def profile
   end
@@ -10,4 +10,5 @@ class BrowseController < ApplicationController
 
   def aboutus
   end
+  
 end

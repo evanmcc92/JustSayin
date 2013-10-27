@@ -1,20 +1,21 @@
 <%= render "browse/header" %>
 <div class="body">
 	<div class="right">
-	<div id="my_posts">
-		<h4>My Posts</h4>
-		<blockquote class="posts">
-			<h5>Poster, Post time</h5>
-			<p>Post text</p>
-			<h6>like, dislike, comment</h6>
-		</blockquote>
-	</div>
+		<div id="my_posts">
+			<h4>My Posts</h4>
+			<blockquote class="posts">
+				<h5>Poster, Post time</h5>
+				<p>Post text</p>
+				<h6>like, dislike, comment</h6>
+			</blockquote>
+		</div>
 	</div>
 	<div class="left">
 		<div id="user_info">
-			<h4>User Information</h4>
+			<h4><%= @user.user_name %></h4>
 			<p><%= @user.first_name %> <%= @user.last_name %></p>
 			<p>xx Posts | xx Followers | xx Following</p>
+			<p><%= @user.user_bio %></p>
 		</div>
 		<div id="create_post">
 			<h4>Create a Post</h4>
