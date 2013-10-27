@@ -18,7 +18,7 @@
 #copy {
 	margin-top: 3.5em;
 }
-#user_info {
+#user_info, #trends, #create_post {
   	padding: 10px;
   	margin-bottom: 10px;
 	width: 250px;
@@ -27,7 +27,7 @@
 	     -moz-border-radius: 6px;
 	          border-radius: 6px;
 }
-#my_posts {
+#my_posts, #posts_stream {
 	float: right;
 	width: 650px;
 	position: relative;
@@ -35,18 +35,6 @@
 #post {
 	background-color: yellow;
 }
-#create_post {
-  	padding: 10px;
-  	margin-bottom: 10px;
-	width: 250px;
-	border: 5px solid #eeeeee;
-	  -webkit-border-radius: 6px;
-	     -moz-border-radius: 6px;
-	          border-radius: 6px;
-}
 .left {
-	
-}
-.right {
 	
 }
