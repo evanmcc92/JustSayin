@@ -10,8 +10,6 @@ class SessionsController < ApplicationController
           flash[:notice] = "Wrong email or password"
       end
   end
-
-  
   
   def destroy
       session[:user_id] = nil
