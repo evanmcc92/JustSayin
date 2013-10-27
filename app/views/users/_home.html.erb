@@ -1,3 +1,5 @@
+
+<% @user ||= current_user %>
 <div class="right">
 	<div id="posts_stream">
 		<blockquote class="posts">
@@ -9,11 +11,11 @@
 </div>
 <div class="left">
 	<div id="user_info">
-		<h4><%= current_user.user_name %></h4>
-		<p><%= current_user.first_name %> <%= current_user.last_name %></p>
-		<p>xx Posts | xx Followers | xx Following</p>
-		<p><%= current_user.user_bio %></p>
-	</div>
+			<h4><%= @user.user_name %></h4>
+			<p><%= @user.first_name %> <%= @user.last_name %></p>
+			<p>xx Posts | <%= render "users/follow_stats" %>
+			<p><%= @user.user_bio %></p>
+		</div>
 	<div id="create_post">
 		<h4>Create a Post</h4>
 		<p>create post box</p>

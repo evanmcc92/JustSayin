@@ -19,6 +19,7 @@ SocialLiving::Application.routes.draw do
   
   resources :users
   resources :sessions
+  resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
