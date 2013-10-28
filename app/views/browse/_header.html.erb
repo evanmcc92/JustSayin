@@ -3,7 +3,6 @@
         <% if current_user %>
             <%= menu_item " " + current_user.first_name, root_path, {:class => "icon-home"} %>
             <%= menu_item " Messages", "#",  {:class => "icon-comment"} %>
-            <%= menu_item " Friends", "#",  {:class => "icon-user"} %>
             <%= drop_down " Settings" do %>
                 <%= menu_item " My Profile", user_path(current_user), {:class => "icon-wrench"} %>
                 <%= menu_item " Account Settings", edit_user_path(current_user), {:class => "icon-cog"} %>
