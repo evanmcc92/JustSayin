@@ -1,7 +1,5 @@
 class BrowseController < ApplicationController
   def home
-    @user = User.find(params[:id])
-    render 'home'
   end
 
   def profile
