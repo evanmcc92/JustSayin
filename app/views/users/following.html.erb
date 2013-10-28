@@ -1,0 +1,32 @@
+<%= render "browse/header" %>
+<div class="body">
+	<div class="right">
+	<div id="my_posts">
+		 	<h3><%= @title %></h3>
+			<% if @following.any? %>
+				<% @following.each do |f| %>
+		    	<ul class="users">
+		    		<p><%= link_to f.user_name, user_path(f) %><br /><i><%= f.first_name %> <%= f.last_name %></i></p>
+		    		<p>xx Posts | <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
+		    	</ul>
+		    	<% end %>
+		    <% else %>
+		    	<p>Noone yet</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="left">
+		<div id="user_info">
+			<h4><%= @user.user_name %></h4>
+			<p><%= @user.first_name %> <%= @user.last_name %></p>
+			<p>xx Posts | <%= render "follow_stats" %></p>
+		    <%= render 'follow_form' if signed_in? %>
+			<p><%= @user.user_bio %></p>
+		</div>
+		<div id="create_post">
+			<h4>Create a Post</h4>
+			<p>create post box</p>
+			<p>create post button</p>
+		</div>
+	</div>
+</div>

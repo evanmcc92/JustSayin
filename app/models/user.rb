@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
       updating_password || new_record?
     end
     def following?(other_user)
-        relationships.find_by_followed_id(other_user.id)
+        relationships.find_by(followed_id: other_user.id)
     end
 
     def follow!(other_user)
