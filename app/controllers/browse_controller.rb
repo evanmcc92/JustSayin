@@ -1,6 +1,6 @@
 class BrowseController < ApplicationController
   def home
-  	@user = current_user
+    @user = User.find(params[:id])
   end
 
   def profile
