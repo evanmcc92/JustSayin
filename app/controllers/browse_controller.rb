@@ -1,5 +1,6 @@
 class BrowseController < ApplicationController
   def home
+  	@user = current_user
   end
 
   def profile
