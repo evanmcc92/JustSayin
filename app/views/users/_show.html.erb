@@ -7,16 +7,4 @@
 		</blockquote>
 	</div>
 </div>
-<div class="left">
-	<div id="user_info">
-		<h4><%= @user.user_name %></h4>
-		<p><%= @user.first_name %> <%= @user.last_name %></p>
-		<p>xx Posts | xx Followers | xx Following</p>
-		<p><%= @user.user_bio %></p>
-	</div>
-	<div id="create_post">
-		<h4>Create a Post</h4>
-		<p>create post box</p>
-		<p>create post button</p>
-	</div>
-</div>
+<%= render "users/left" %>
