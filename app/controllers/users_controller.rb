@@ -57,9 +57,6 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
-  def index
-  end
-
   def show
     @user = User.find(params[:id])
   end
