@@ -1,4 +1,9 @@
 <%= form_tag login_user_path do %>
+	<% if flash[:notice] %>
+		<div id="error_explanation">
+			<h3><%= flash[:notice] %></h3>
+		</div>
+	<% end %>
 	<p>
 		<%= label_tag :email %>
 		<%= text_field_tag :email, params[:email] %>
