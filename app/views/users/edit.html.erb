@@ -26,15 +26,16 @@
 		<p><%= f.label :email %>
 		<%= f.text_field :email %></p>
 
-		<p><%= f.label :user_bio %>
+		<p><%= f.label :user_bio, "Brief Bio" %>
     	<%= f.text_area :user_bio %></p>
 
-		<p><%= f.label :password %>
+		<p><%= f.label :password, "*Password" %>
 		<%= f.password_field :password %></p>
 
-		<p><%= f.label :password_confirmation, "Confirmation" %>
+		<p><%= f.label :password_confirmation, "*Confirmation" %>
 		<%= f.password_field :password_confirmation %><br /></p>
 
 		<p><%= f.submit "Save Changes", class: "btn btn-large btn-primary" %></p>
     <% end %>
+    <%= button_to 'Delete My Account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: "btn btn-large" %>
 </div>
