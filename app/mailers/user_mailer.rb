@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
  
   def welcome_email(user)
     @user = user
-    @url  = 'http://gymingit.herokuapp.com/signup'
+    @url  = 'http://justsayin.herokuapp.com/signup'
     mail(to: @user.email, subject: 'Thanks for joining!')
   end
 
