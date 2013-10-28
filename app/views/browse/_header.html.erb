@@ -1,6 +1,6 @@
 <%= nav_bar :fixed => :top, :brand => "JustSayin", :brand_link => "/" do %>
-    <% if current_user %>
-        <% menu_group :pull => :right do %>
+    <% menu_group :pull => :right do %>
+        <% if current_user %>
             <%= menu_item " " + current_user.first_name, root_path, {:class => "icon-home"} %>
             <%= menu_item " Messages", "#",  {:class => "icon-comment"} %>
             <%= drop_down " Settings" do %>
@@ -9,9 +9,9 @@
                 <%= drop_down_divider %>
                 <%= menu_item " Log Out", logout_user_path, {:class => "icon-off"}  %>
             <% end %>
+        <% else %>
+            <%= menu_item "About Us", browse_aboutus_path %>
+            <%= menu_item "Sign Up/Login", signup_path %>
         <% end %>
-    <% else %>
-        <%= menu_item "About Us", browse_aboutus_path %>
-        <%= menu_item "Sign Up/Login", signup_path %>
     <% end %>
 <% end %>
