@@ -31,10 +31,19 @@
 	float: right;
 	width: 650px;
 	position: relative;
+	  -webkit-border-radius: 6px;
+	     -moz-border-radius: 6px;
+	          border-radius: 6px;
 }
 #post {
 	background-color: yellow;
 }
 .left {
 	
+}
+.homeh1 {
+	padding-bottom: 2em;
+}
+#memberfooter {
+	margin-top: 25px;
 }
