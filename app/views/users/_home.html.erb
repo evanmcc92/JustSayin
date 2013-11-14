@@ -1,11 +1,7 @@
 <% @user = current_user %>
 <div class="right">
 	<div id="posts_stream">
-		<blockquote class="posts">
-			<h5>Poster, Post time</h5>
-			<p>Post text</p>
-			<h6>like, dislike, comment</h6>
-		</blockquote>
+		<%= render "micropost/micropost" %>
 	</div>
 </div>
 <div class="left">
