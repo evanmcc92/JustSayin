@@ -1,7 +1,5 @@
 SocialLiving::Application.routes.draw do
   
-  get "relationships/create"
-  get "relationships/destroy"
   root :to => 'browse#home'
   get "browse/profile"
   get "browse/message"
@@ -11,10 +9,12 @@ SocialLiving::Application.routes.draw do
   get "users/destroy"
   get "users/update"
   get "users/show"
+  get "relationships/create"
+  get "relationships/destroy"
   
   #Sessions Users
   get "logout_user" => "sessions#destroy", :as => "logout_user"
-  post "login_user" => "sessions#new", :as => "login_user"
+  post "login_user" => "sessions#create", :as => "login_user"
   
   #Users
   get "signup" => "users#new", :as => "signup"
@@ -24,9 +24,11 @@ SocialLiving::Application.routes.draw do
           get :following, :followers
       end
   end
+  
   resources :sessions
   resources :relationships, only: [:create, :destroy]
-  resources :microposts
+  resources :microposts, :only => [:create, :destroy]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

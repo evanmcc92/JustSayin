@@ -4,11 +4,9 @@
 	<div class="right">
 		<div id="my_posts">
 			<h3><%= @user.user_name %></h3>
-			<blockquote class="posts">
-				<h5>Poster, Post time</h5>
-				<p>Post text</p>
-				<h6>like, dislike, comment</h6>
-			</blockquote>
+			<% if @microposts.any? %>
+				<%= render "microposts/micropost" %>
+			<% end %>
 		</div>
 	</div>
 	<%= render "left" %>

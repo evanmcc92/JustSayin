@@ -1,8 +1,10 @@
 <% @user = current_user %>
 <div class="right">
+	<% if @feed_items.any? %>
 	<div id="posts_stream">
-		<%= render "micropost/micropost" %>
+		<%= render partial: 'browse/feed_item', collection: @feed_items %>
 	</div>
+	<% end %>
 </div>
 <div class="left">
 	<%= render "users/left" %>

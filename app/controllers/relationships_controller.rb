@@ -1,5 +1,8 @@
 class RelationshipsController < ApplicationController
     
+    def show
+    end
+
     def create
         @user = User.find(params[:relationship][:followed_id])
     	@current_user = User.find(session[:user_id])

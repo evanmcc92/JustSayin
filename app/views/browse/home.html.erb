@@ -1,5 +1,5 @@
 <% if current_user %>
-	<%= render "header" %>
+	<%= render "browse/header" %>
 	<div class="body">
 		<%= render "users/home" %>
 	</div>
@@ -34,7 +34,7 @@
 							        </ul>
 							      </div>
 							    <% end %>
-							    <h3>Sign Up</h3>
+							    <h3>Join the Fun!</h3>
 							    <p><%= f.text_field :user_name, :placeholder => "User Name" %></p>
 							    <p><%= f.text_field :email, :placeholder => "Email" %></p>
 							    <p><%= f.password_field :password, :placeholder => "Password" %></p>
@@ -46,5 +46,5 @@
 				</div>
 			</div>
 		</div>
-	<%= render "footer" %>
+	<%= render "browse/footer" %>
 <% end %>

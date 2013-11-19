@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
+
   def new
-      @user = User.new
+    @user = User.new
+  end
+
+  def index
+    @users = User.all
   end
 
   def create
-      @user = User.new(params[:user])
+      @user = User.new(user_params)
       if @user.save
-        session[:user_id] = @user.id
+        sign_in @user
         redirect_to @user
       else
         render :action => "new"
@@ -19,17 +26,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # required for settings form to submit when password is left blank
-    if params[:user][:password].blank?
-      params[:user].delete("password")
-      params[:user].delete("password_confirmation")
-    end
-
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       redirect_to edit_user_path(@user), :flash => {:success => "You've Successful Updated Your Account!"}
     else
       render "edit"
     end
+  end
+
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   def following
@@ -38,6 +43,10 @@ class UsersController < ApplicationController
     @following = @user.followed_users(User)
     @users = User.all
     render 'following'
+    if signed_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed
+    end
   end
 
   def followers
@@ -46,6 +55,10 @@ class UsersController < ApplicationController
     @followers = @user.followers(User)
     @users = User.all
     render 'follower'
+    if signed_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed
+    end
   end
 
   def destroy
@@ -59,5 +72,24 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts
+    if signed_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed
+    end
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+    end
+
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
 end
