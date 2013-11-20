@@ -4,8 +4,8 @@
 	<div class="right">
 		<div id="my_posts">
 			<h3><%= @user.user_name %></h3>
-			<% if @microposts.any? %>
-				<%= render "microposts/micropost" %>
+			<% if @user.microposts.any? %>
+				<%= render @microposts %>
 			<% end %>
 		</div>
 	</div>

@@ -33,10 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def feed
-    Micropost.where("user_id = ?", id)
-  end
-
   def following
     @title = "Following"
     @user = User.find(params[:id])
@@ -63,7 +59,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts
+    @microposts = @user.microposts if signed_in?
+    @micropost  = current_user.microposts.build
   end
 
   private
