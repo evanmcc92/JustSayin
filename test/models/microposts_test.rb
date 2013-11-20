@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MicropostControllerTest < ActionController::TestCase
+class MicropostsTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -43,10 +43,6 @@ class UsersController < ApplicationController
     @following = @user.followed_users(User)
     @users = User.all
     render 'following'
-    if signed_in?
-      @micropost  = current_user.microposts.build
-      @feed_items = current_user.feed
-    end
   end
 
   def followers
@@ -55,10 +51,6 @@ class UsersController < ApplicationController
     @followers = @user.followers(User)
     @users = User.all
     render 'follower'
-    if signed_in?
-      @micropost  = current_user.microposts.build
-      @feed_items = current_user.feed
-    end
   end
 
   def destroy
@@ -72,10 +64,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts
-    if signed_in?
-      @micropost  = current_user.microposts.build
-      @feed_items = current_user.feed
-    end
   end
 
   private

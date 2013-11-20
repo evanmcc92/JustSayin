@@ -1,8 +1,9 @@
-<blockquote class="posts">
-	<h5><%= link_to feed_item.user.name, feed_item.user %>, <%= feed_item.created_at %></h5>
+<blockquote class="posts" id="<%= feed_item.id %>">
+	<h5><%= link_to feed_item.user.user_name, feed_item.user %>, <%= feed_item.created_at %></h5>
 	<p><%= feed_item.content %></p>
 	<h6>like, dislike, comment, 
-	<% if current_user?(micropost.user) %>
-		<%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" }, title: micropost.content %>
-	<% end %></h6>
+		<% if current_user?(feed_item.user) %>
+			<%= link_to "delete", @microposts, method: :delete, data: { confirm: "You sure?" } %>
+		<% end %>
+	</h6>
 </blockquote>
