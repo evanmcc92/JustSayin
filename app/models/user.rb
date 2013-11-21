@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
     def should_validate_password?
       updating_password || new_record?
     end
+    
     def following?(other_user)
         relationships.find_by(followed_id: other_user.id)
     end
@@ -62,8 +63,7 @@ class User < ActiveRecord::Base
     end
 
     def feed
-        # This is preliminary. See "Following users" for the full implementation.
-        Micropost.where("user_id = ?", id)
+        Micropost.from_users_followed_by(self)
     end
 
     private

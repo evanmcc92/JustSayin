@@ -36,17 +36,15 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find(params[:id])
-    @following = @user.followed_users(User)
-    @users = User.all
-    render 'following'
+    @users = @user.followed_users
+    render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
-    @followers = @user.followers(User)
-    @users = User.all
-    render 'follower'
+    @users = @user.followers
+    render 'show_follow'
   end
 
   def destroy
