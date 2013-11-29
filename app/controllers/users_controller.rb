@@ -8,9 +8,8 @@ class UsersController < ApplicationController
 
   def index
     if params[:search]
-    @user = User.search(params[:search]).order("created_at DESC")
-      else
-
+      @user = User.search(params[:search]).order("created_at DESC")
+    else
       @user = User.all.order('created_at DESC')
     end
   end
@@ -62,6 +61,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+    else
+      @users = User.all.order('created_at DESC')
+    end
+
     @microposts = @user.microposts if signed_in?
     @micropost  = current_user.microposts.build
   end

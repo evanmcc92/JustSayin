@@ -29,12 +29,6 @@
 		</div>
 	</div>
 	<div class="left">
-		<div id="search">
-			<%= form_tag(users_path, :method => 'get', :class => "input-append") do %>
-		    	<%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton" %>
-		    	<%= submit_tag "Search", :name => nil, :class => "btn" %>
-			<% end %>
-		</div>
 		<div id="trends">
 			<h4>Trends</h4>
 			<ul>
