@@ -1,16 +1,8 @@
 SocialLiving::Application.routes.draw do
-  
+
   root :to => 'browse#home'
   get "browse/profile"
-  get "browse/message"
   get "browse/aboutus"
-  get "users/new"
-  get "users/edit"
-  get "users/destroy"
-  get "users/update"
-  get "users/show"
-  get "relationships/create"
-  get "relationships/destroy"
   
   #Sessions Users
   get "logout_user" => "sessions#destroy", :as => "logout_user"
@@ -25,7 +17,7 @@ SocialLiving::Application.routes.draw do
       end
   end
   
-  resources :sessions
+  resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :microposts, only: [:create, :destroy]
   

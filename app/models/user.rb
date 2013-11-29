@@ -45,6 +45,18 @@ class User < ActiveRecord::Base
     def should_validate_password?
       updating_password || new_record?
     end
+
+    #messages
+    has_many :received_messages, :class_name => 'Message', :primary_key=>'beamer_id', :foreign_key => 'recepient_id', :order => "messages.created_at DESC", :conditions => ["messages.recepient_deleted = ?", false]
+ 
+    def unread_messages?
+        unread_message_count > 0 ? true : false
+    end
+     
+    # Returns the number of unread messages for this user
+    def unread_message_count
+        eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
+    end
     
     #following/follower
     def following?(other_user)
