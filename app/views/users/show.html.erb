@@ -11,9 +11,9 @@
 	</div>
 	<div class="left">
 		<div id="search">
-			<% form_tag user_path, :method => 'get' do %>
-				<%= text_field_tag :search, params[:search] %>
-				<%= submit_tag "Search", :name => nil %>
+			<%= form_tag users_path, :method => 'get' do %>
+		    	<%= text_field_tag :search, params.has_key?("search") ? params[:search][:user_name, :first_name, :last_name, :email] : "" %><br/>
+		    	<%= submit_tag "Search", :name => nil %>
 			<% end %>
 		</div>
 		<div id="user_info">

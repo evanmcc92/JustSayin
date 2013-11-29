@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
     attr_accessor :password
     before_save :encrypt_password
 
+    #validate user params
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
     validates_confirmation_of :password , :message => "Passwords do not match."
@@ -71,9 +72,18 @@ class User < ActiveRecord::Base
         Micropost.from_users_followed_by(self)
     end
 
+    #search
+    # def self.search(keyword, params={})
+    #     search do
+    #       boolean do
+    #         must { string keyword, default_operator: "AND" }
+    #       end
+    #     end
+    # end
+
     def self.search(search)
       if search
-        find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+        find(:all, :conditions => ['user_name || first_name || last_name LIKE ?', "%#{search}%"])
       else
         find(:all)
       end

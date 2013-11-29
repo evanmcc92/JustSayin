@@ -9,6 +9,12 @@
 </div>
 
 <div class="left">
+	<div id="search">
+		<% form_tag users_path, :method => 'get' do %>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search", :name => nil %>
+		<% end %>
+	</div>
 	<div id="user_info">
 		<h4><%= link_to @user.user_name, user_path(@user) %></h4>
 		<p><%= @user.first_name %> <%= @user.last_name %></p>
