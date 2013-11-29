@@ -3,28 +3,32 @@
 	<div class="right">
 		<div id="my_posts">
 			<h3>Search results for "<%= params[:search] %>"</h3>
-				<% for user in @user %>
-		    	<blockquote class="user">
-		    		<div id="search_follow_form">
-						<% if current_user != user %>
-							<% if current_user.following?(user) %>
-								<%= form_for(current_user.relationships.find_by(followed_id: user), html: { method: :delete }) do |f| %>
-									<%= f.submit "Unfollow", class: "btn" %>
-								<% end %>
-							<% else %>
-								<%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
-									<div><%= f.hidden_field :followed_id %></div>
-									<%= f.submit "Follow", class: "btn btn-primary" %>
+				<% if @user.any?%>
+					<% for user in @user %>
+			    	<blockquote class="user">
+			    		<div id="search_follow_form">
+							<% if current_user != user %>
+								<% if current_user.following?(user) %>
+									<%= form_for(current_user.relationships.find_by(followed_id: user), html: { method: :delete }) do |f| %>
+										<%= f.submit "Unfollow", class: "btn" %>
+									<% end %>
+								<% else %>
+									<%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
+										<div><%= f.hidden_field :followed_id %></div>
+										<%= f.submit "Follow", class: "btn btn-primary" %>
+									<% end %>
 								<% end %>
 							<% end %>
-						<% end %>
-					</div>
-		    		<p>
-			    		<%= link_to user.user_name, user_path(user) %><br />
-			    		<i><%= user.first_name %> <%= user.last_name %></i><br />
-			    		<%= user.user_bio %>
-		    		</p>
-		    	</blockquote>
+						</div>
+			    		<p>
+				    		<%= link_to user.user_name, user_path(user) %><br />
+				    		<i><%= user.first_name %> <%= user.last_name %></i><br />
+				    		<%= user.user_bio %>
+			    		</p>
+			    	</blockquote>
+			    	<% end %>
+				<% else %>
+					<p>Sorry! No results, try again.</p>
 		    	<% end %>
 		</div>
 	</div>
