@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @user = User.search(params[:search])
   end
 
   def create

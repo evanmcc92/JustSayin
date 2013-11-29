@@ -4,11 +4,13 @@ class User < ActiveRecord::Base
     
     has_many :microposts, dependent: :destroy
 
+    #relationships
     has_many :relationships, foreign_key: "follower_id", dependent: :destroy
     has_many :followed_users, through: :relationships, source: :followed
     has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
     has_many :followers, through: :reverse_relationships, source: :follower
 
+    #encrypt password
     include BCrypt
     attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :user_name, :user_bio
     attr_accessor :password
@@ -43,6 +45,7 @@ class User < ActiveRecord::Base
       updating_password || new_record?
     end
     
+    #following/follower
     def following?(other_user)
         relationships.find_by(followed_id: other_user.id)
     end
@@ -54,6 +57,7 @@ class User < ActiveRecord::Base
         relationships.find_by(followed_id: other_user.id).destroy!
     end
 
+    #login
     def User.new_remember_token
         SecureRandom.urlsafe_base64
     end
@@ -62,13 +66,22 @@ class User < ActiveRecord::Base
         Digest::SHA1.hexdigest(token.to_s)
     end
 
+    #feed
     def feed
         Micropost.from_users_followed_by(self)
     end
 
+    def self.search(search)
+      if search
+        find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      else
+        find(:all)
+      end
+    end
+
     private
 
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+        def create_remember_token
+          self.remember_token = User.encrypt(User.new_remember_token)
+        end
 end
