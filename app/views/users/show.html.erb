@@ -2,12 +2,12 @@
 <% @user ||= current_user %>
 <div class="body">
 	<div class="right">
-		<blockquote id="user">
+		<div id="my_posts">
 			<h3><%= @user.user_name %></h3>
 			<% if @user.microposts.any? %>
 				<%= render @microposts %>
 			<% end %>
-		</blockquote>
+		</div>
 	</div>
 	<div class="left">
 		<div id="search">

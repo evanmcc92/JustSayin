@@ -18,7 +18,7 @@
 	<div class="left">
 		<div id="user_info">
 			<h4><%= link_to @user.user_name, user_path(@user) %></h4>
-			<p><%= @user.first_name %> <%= @user.last_name %></p>
+			<p><i><%= @user.first_name %> <%= @user.last_name %></i></p>
 			<p><%= @user.microposts.count %> Posts | <%= render "users/follow_stats" %></p>
 		    <%= render 'users/follow_form' if signed_in? %>
 			<p><%= @user.user_bio %></p>

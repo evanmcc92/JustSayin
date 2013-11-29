@@ -73,14 +73,6 @@ class User < ActiveRecord::Base
     end
 
     #search
-    # def self.search(keyword, params={})
-    #     search do
-    #       boolean do
-    #         must { string keyword, default_operator: "AND" }
-    #       end
-    #     end
-    # end
-
     def self.search(query)
         where("user_name like ?", "%#{query}%")
     end
