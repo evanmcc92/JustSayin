@@ -2,23 +2,23 @@
 <% @user ||= current_user %>
 <div class="body">
 	<div class="right">
-		<div id="my_posts">
+		<blockquote id="user">
 			<h3><%= @user.user_name %></h3>
 			<% if @user.microposts.any? %>
 				<%= render @microposts %>
 			<% end %>
-		</div>
+		</blockquote>
 	</div>
 	<div class="left">
 		<div id="search">
-			<%= form_tag users_path, :method => 'get' do %>
-		    	<%= text_field_tag :search, params.has_key?("search") ? params[:search][:user_name, :first_name, :last_name, :email] : "" %><br/>
-		    	<%= submit_tag "Search", :name => nil %>
+			<%= form_tag(users_path, :method => 'get', :class => "input-append") do %>
+		    	<%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton" %>
+		    	<%= submit_tag "Search", :name => nil, :class => "btn" %>
 			<% end %>
 		</div>
 		<div id="user_info">
 			<h4><%= link_to @user.user_name, user_path(@user) %></h4>
-			<p><%= @user.first_name %> <%= @user.last_name %></p>
+			<p><i><%= @user.first_name %> <%= @user.last_name %></i></p>
 			<p><%= @user.microposts.count %> Posts | <%= render "users/follow_stats" %></p>
 		    <%= render 'users/follow_form' if signed_in? %>
 			<p><%= @user.user_bio %></p>

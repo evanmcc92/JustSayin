@@ -2,17 +2,21 @@
 <div class="body">
 	<div class="right">
 		<div id="my_posts">
-		    	<ul class="users">
-		    		<p><%= link_to @user.user_name, user_path %><br /><i><%= @user.first_name %> <%= @user.last_name %></i></p>
-		    		<p><%= @user.microposts.count %> Posts | <%= link_to "#{@user.followers.count} Followers", followers_user_path %> | <%= link_to "#{@user.followed_users.count} Followers", following_user_path %></p>
-		    	</ul>
+				<% for user in @user %>
+		    	<blockquote class="my_posts">
+		    		<p>
+			    		<%= link_to user.user_name, user_path(user) %><br />
+			    		<i><%= user.first_name %> <%= user.last_name %></i>
+		    		</p>
+		    	</blockquote>
+		    	<% end %>
 		</div>
 	</div>
 	<div class="left">
 		<div id="search">
-			<%= form_tag users_path, :method => 'get' do %>
-		    	<%= text_field_tag :search, params.has_key?("search") ? params[:search][:user_name, :first_name, :last_name, :email] : "" %><br/>
-		    	<%= submit_tag "Search", :name => nil %>
+			<%= form_tag(users_path, :method => 'get', :class => "input-append") do %>
+		    	<%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton" %>
+		    	<%= submit_tag "Search", :name => nil, :class => "btn" %>
 			<% end %>
 		</div>
 		<div id="trends">

@@ -81,12 +81,8 @@ class User < ActiveRecord::Base
     #     end
     # end
 
-    def self.search(search)
-      if search
-        find(:all, :conditions => ['user_name || first_name || last_name LIKE ?', "%#{search}%"])
-      else
-        find(:all)
-      end
+    def self.search(query)
+        where("user_name like ?", "%#{query}%")
     end
 
     private

@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.search(params[:search])
+    if params[:search]
+    @user = User.search(params[:search]).order("created_at DESC")
+      else
+
+      @user = User.all.order('created_at DESC')
+    end
   end
 
   def create
@@ -26,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(update_user_params)
       redirect_to edit_user_path(@user), :flash => {:success => "You've Successful Updated Your Account!"}
     else
       render "edit"
@@ -65,6 +70,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+    end
+
+    def update_user_params
+      params.require(:user).permit(:user_name, :first_name, :last_name, :user_bio, :email, :password, :password_confirmation)
     end
 
     def signed_in_user
