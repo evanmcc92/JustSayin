@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
-  	@comment = current_user.comments.create(comment_params)
+  	@micropost = Micropost.find(params[:micropost_id])
+  	@comment = @micropost.comments.build(comment_params)
   	if @comment.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Comment created!"
       redirect_to root_url
     else
       @feed_comment_items = []
