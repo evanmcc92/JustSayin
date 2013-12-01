@@ -5,5 +5,7 @@
 		<% if current_user?(feed_item.user) %>
 			, <%= link_to "", micropost_path(feed_item), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
 		<% end %>
+		<%= render partial: 'browse/feed_comment_item', collection: @feed_comment_items %>
+		<%= render "comments/comment_form" %>
 	</h6>
 </blockquote>

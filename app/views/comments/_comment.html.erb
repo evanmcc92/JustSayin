@@ -1,0 +1,10 @@
+<blockquote class="comments" id="<%= comment.id %>">
+	<h6><%= link_to comment.user, comment.user %></h6>
+	<h6><%= comment.comment %></h6>
+	<h6>
+		<% if current_user?(comment.user) %>
+			<%= link_to "", comment_path(comment), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
+		<% end %>
+	</h6>
+</blockquote>
+

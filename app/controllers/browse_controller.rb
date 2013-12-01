@@ -7,7 +7,9 @@ class BrowseController < ApplicationController
     end
     if signed_in?
       @micropost  = current_user.microposts.build
+      @comment  = @micropost.comments.build
       @feed_items = current_user.feed
+      @feed_comment_items = current_user.feed_comment
     end
   end
 

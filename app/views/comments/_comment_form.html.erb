@@ -1,0 +1,19 @@
+<%= form_for(@comment) do |c| %>
+
+
+    <% if @comment.errors.any? %>
+	  <div id="error_explanation">
+	    <div class="alert alert-error">
+	      The form contains <%= pluralize(@comment.errors.count, "error") %>.
+	    </div>
+	    <ul>
+	    <% @comment.errors.full_messages.each do |msg| %>
+	      <li>* <%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+	<%= c.text_area :comment, :placeholder => "They said what?!" %>
+	<%= c.submit "Comment", class: "btn btn-primary" %>
+<% end %>

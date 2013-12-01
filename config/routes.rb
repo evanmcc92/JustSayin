@@ -1,5 +1,5 @@
 SocialLiving::Application.routes.draw do
-  
+
   root :to => 'browse#home'
   get "browse/profile"
   get "browse/message"
@@ -28,6 +28,7 @@ SocialLiving::Application.routes.draw do
   resources :sessions
   resources :relationships, only: [:create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
