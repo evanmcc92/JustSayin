@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     before_create :create_remember_token
     
     has_many :microposts, dependent: :destroy
-    has_many :comments, dependent: :destroy
+    has_many :comments
 
     #relationships
     has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -72,7 +72,6 @@ class User < ActiveRecord::Base
     def feed
         Micropost.from_users_followed_by(self)
     end
-
 
     #search
     def self.search(query)

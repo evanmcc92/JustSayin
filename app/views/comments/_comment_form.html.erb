@@ -1,4 +1,5 @@
-<%= form_for(@comment) do |c| %>
+<div class="input-append">
+<%= form_for([micropost, @comment]) do |c| %>
 
     <% if @comment.errors.any? %>
 	  <div id="error_explanation">
@@ -11,8 +12,11 @@
 	    <% end %>
 	    </ul>
 	  </div>
+	  <% else %>
+		<h3><%= flash[:success] %></h3>
 	<% end %>
 
-	<%= c.text_area :comment, :placeholder => "They said what?!" %>
-	<%= c.submit "Comment", class: "btn btn-primary" %>
+	<%= c.text_area :content, :placeholder => "They said what?!", :class => "appendedInputButton" %>
+	<%= c.submit "Comment", class: "btn " %>
 <% end %>
+</div>

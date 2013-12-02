@@ -3,18 +3,21 @@ class CommentsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
-  	@micropost = Micropost.find(params[:micropost_id])
-  	@comment = @micropost.comments.build(comment_params)
-  	if @comment.save
-      flash[:success] = "Comment created!"
-      redirect_to root_url
+    @micropost = Micropost.find(params[:micropost_id])
+    @comment = Comment.new(params[:comment])
+    @comment.micropost = @micropost
+    @comment.user = current_user
+    if @comment.save
+       flash[:success] = "Comment created!"
+       redirect_to current_user
     else
-      @feed_comment_items = []
-      redirect_to 'browse/home'
+      render '/'
     end
   end
 
   def destroy
+    @micropost= Micropost.find(params[:micropost_id])
+    @comment = @micropost.comments.find(params[:id])
     @comment.destroy
     redirect_to root_path
   end
@@ -22,7 +25,7 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:comment, :micropost_id, :user_id)
+      params.require(:comment).permit(:content)
     end
 
     def correct_user

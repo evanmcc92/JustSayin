@@ -5,7 +5,11 @@
 			<%= link_to "", micropost_path(micropost), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
 		<% end %>
 	</h6>
-			<%= render @comments %>
-		<%= render "comments/comment_form" %>
+  	<% if @micropost.comments.any? %>
+		<%= render @comments %>
+	<% else %>
+  		<p>No Comments</p>
+	<% end %>
+		<%= render "comments/comment_form" , micropost: micropost%>
 </blockquote>
 

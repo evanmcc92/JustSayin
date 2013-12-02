@@ -6,6 +6,8 @@
 			<h3><%= @user.user_name %></h3>
 			<% if @user.microposts.any? %>
 				<%= render @microposts %>
+			<% else %>
+				<p>No Posts</p>
 			<% end %>
 		</div>
 	</div>
