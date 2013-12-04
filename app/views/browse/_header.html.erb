@@ -13,6 +13,7 @@
             <% end %>
         <% end %>
     <% else %>
+        <% menu_group :pull => :right do %>
             <%= menu_item "Sign Up/Login", signup_path %>
         <% end %>
     <% end %>
