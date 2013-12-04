@@ -4,32 +4,32 @@ class CommentsController < ApplicationController
 
   def create
     @micropost = Micropost.find(params[:micropost_id])
-    @comment = Comment.new(params[:comment])
-    @comment.micropost = @micropost
-    @comment.user = current_user
+	@comment = @micropost.comments.build(comment_params)
+    @comment.micropost_id = @micropost.id
+    @comment.user_id = current_user.id
+    @user = User.find_by(params[:id])
+
     if @comment.save
-       flash[:success] = "Comment created!"
-       redirect_to current_user
+      flash[:success] = "Comment created!"
+      redirect_to user_path(@user)
     else
-      render '/'
+      redirect_to user_path(current_user)
     end
   end
 
   def destroy
-    @micropost= Micropost.find(params[:micropost_id])
-    @comment = @micropost.comments.find(params[:id])
     @comment.destroy
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   private
 
     def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:content, :user_id, :micropost_id)
     end
 
     def correct_user
-      @comment = micropost.comments.find_by(id: params[:id])
+      @comment = current_user.comments.find_by_id(params[:id])
       redirect_to root_url if @comment.nil?
     end
 end

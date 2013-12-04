@@ -9,12 +9,13 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      redirect_to 'browse/home'
+      redirect_to root_url
     end
   end
 
   def destroy
     @micropost.destroy
+    redirect_to root_path
   end
 
   def index

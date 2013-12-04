@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
     before_save { self.email = email.downcase }
     before_create :create_remember_token
     
+    #comments and posts
     has_many :microposts, dependent: :destroy
     has_many :comments
 

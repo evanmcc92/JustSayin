@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :comment
+  attr_accessible :content
 
   belongs_to :user
   belongs_to :micropost
@@ -8,5 +8,5 @@ class Comment < ActiveRecord::Base
   
   validates :user_id, presence: true
   validates :micropost_id, presence: true
-  validates :comment, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 140 }
 end

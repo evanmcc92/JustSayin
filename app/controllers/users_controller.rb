@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     @microposts = @user.microposts if signed_in?
     @micropost  = current_user.microposts.build
     @comments = @micropost.comments if signed_in?
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new
   end
 
   private
