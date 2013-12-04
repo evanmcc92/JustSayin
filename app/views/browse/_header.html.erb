@@ -5,7 +5,6 @@
                 <%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton", :placeholder => "Search" %>
             <% end %>
             <%= menu_item " Home", root_path, {:class => "icon-home"} %>
-            <%= menu_item " Messages", "#",  {:class => "icon-comment"} %>
             <%= drop_down " Settings" do %>
                 <%= menu_item " My Profile", user_path(current_user), {:class => "icon-wrench"} %>
                 <%= menu_item " Account Settings", edit_user_path(current_user), {:class => "icon-cog"} %>
