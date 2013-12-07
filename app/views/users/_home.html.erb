@@ -4,8 +4,13 @@
 		<div id="top"><h3>Recent Posts</h3></div>
 			<% if @feed_items.any? %>
 				<%= render partial: 'browse/feed_item', collection: @feed_items %>
+				<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
+			<% else %>
+				<blockquote class="posts">
+					<p>Create a post and get out there and follow some people!</p>
+				</blockquote>
+				<a href="#top"><div id="bottom"><h3></h3></div></a>
 			<% end %>
-		<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 	</div>
 </div>
 <div class="left">

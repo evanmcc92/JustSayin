@@ -2,7 +2,7 @@
 <div class="body">
 	<div class="right">
 	<div id="my_posts">
-		 	<h3><%= @title %></h3>
+		 	<div id="top"><h3><%= @title %></h3></div>
 			<% if @users.any? %>
 				<blockquote class="posts">
 				<% @users.each do |f| %>
@@ -13,8 +13,12 @@
 		    		<p><%= f.microposts.count %> Posts | <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
 		    	<% end %>
 		    	</blockquote>
+				<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 		    <% else %>
-		    	<p>Noone yet</p>
+				<blockquote class="posts">
+		    		<p>No one just yet. Give it some time.</p>
+		    	</blockquote>
+				<a href="#top"><div id="bottom"><h3></h3></div></a>
 			<% end %>
 		</div>
 	</div>

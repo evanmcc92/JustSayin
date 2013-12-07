@@ -6,10 +6,13 @@
 			<div id="top"><h3><%= @user.user_name %></h3></div>
 			<% if @user.microposts.any? %>
 				<%= render @microposts %>
+				<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 			<% else %>
-				<p>No Posts</p>
+				<blockquote class="posts">
+					<p>No Posts</p>
+				</blockquote>
+				<a href="#top"><div id="bottom"><h3></h3></div></a>
 			<% end %>
-		<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 		</div>
 	</div>
 	<div class="left">
