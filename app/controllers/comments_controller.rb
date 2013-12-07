@@ -13,13 +13,14 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment created!"
       redirect_to user_path(@user)
     else
+      @feed_items_comments = []
       redirect_to user_path(current_user)
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to user_path(current_user)
+    redirect_to root_path
   end
 
   private

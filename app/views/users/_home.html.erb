@@ -1,10 +1,11 @@
 <% @user = current_user %>
 <div class="right">
 	<div id="posts_stream">
-		<h3>Recent Posts</h3>
+		<div id="top"><h3>Recent Posts</h3></div>
 			<% if @feed_items.any? %>
 				<%= render partial: 'browse/feed_item', collection: @feed_items %>
 			<% end %>
+		<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 	</div>
 </div>
 
@@ -14,13 +15,7 @@
 		<p><i><%= @user.first_name %> <%= @user.last_name %></i></p>
 		<p><%= @user.microposts.count %> Posts | <%= render "users/follow_stats" %></p>
 	    <%= render 'users/follow_form' if signed_in? %>
-		<p><%= @user.user_bio %></p>
+		<small><%= @user.user_bio %></small>
 		<%= render "microposts/micropost_form" %>
-	</div>
-	<div id="trends">
-		<h4>Trends</h4>
-		<ul>
-			<li>list of trends</li>
-		</ul>
 	</div>
 </div>

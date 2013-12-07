@@ -69,9 +69,13 @@ class User < ActiveRecord::Base
         Digest::SHA1.hexdigest(token.to_s)
     end
 
-    #feed
+    #feed for micropost and comment
     def feed
         Micropost.from_users_followed_by(self)
+    end
+
+    def feed_comment
+        Comment.from_users_followed_by(self)
     end
 
     #search

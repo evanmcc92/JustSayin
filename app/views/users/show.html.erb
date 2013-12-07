@@ -3,12 +3,13 @@
 <div class="body">
 	<div class="right">
 		<div id="my_posts">
-			<h3><%= @user.user_name %></h3>
+			<div id="top"><h3><%= @user.user_name %></h3></div>
 			<% if @user.microposts.any? %>
 				<%= render @microposts %>
 			<% else %>
 				<p>No Posts</p>
 			<% end %>
+		<a href="#top"><div id="bottom"><h3>Top</h3></div></a>
 		</div>
 	</div>
 	<div class="left">
@@ -17,13 +18,7 @@
 			<p><i><%= @user.first_name %> <%= @user.last_name %></i></p>
 			<p><%= @user.microposts.count %> Posts | <%= render "users/follow_stats" %></p>
 		    <%= render 'users/follow_form' if signed_in? %>
-			<p><%= @user.user_bio %></p>
-		</div>
-		<div id="trends">
-			<h4>Trends</h4>
-			<ul>
-				<li>list of trends</li>
-			</ul>
+			<small><%= @user.user_bio %></small>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,8 @@
+<div class="comments" id="<%= feed_item_comment.id %>">
+	<h6><%= feed_item_comment.content %></h6>
+	<small><span class="comment_username"><%= link_to feed_item_comment.user.user_name, user_path(feed_item_comment.user) %></span> | <%= time_ago_in_words(feed_item_comment.created_at) %>
+		<% if current_user?(feed_item_comment.user) %>
+			| <%= link_to "", comment_path(feed_item_comment), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
+		<% end %>
+	</small>
+</div>

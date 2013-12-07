@@ -1,10 +1,9 @@
-<blockquote class="comments" id="<%= comment.id %>">
-	<h6><%= comment.user.user_name %></h6>
-	<small><%= comment.content %></small>
-	<h6>
+<div class="comments" id="<%= comment.id %>">
+	<h6><%= comment.content %></h6>
+	<small><%= link_to comment.user.user_name, user_path(comment.user) %> | <%= time_ago_in_words(comment.created_at) %>
 		<% if current_user?(comment.user) %>
-			<%= link_to "", comment_path(comment), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
+			| <%= link_to "", comment_path(comment), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
 		<% end %>
-	</h6>
-</blockquote>
+	</small>
+</div>
 

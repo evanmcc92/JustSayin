@@ -7,7 +7,7 @@
 				<% @users.each do |f| %>
 		    	<ul class="users">
 		    		<p><%= link_to f.user_name, user_path(f) %><br /><i><%= f.first_name %> <%= f.last_name %></i></p>
-		    		<p><%= @user.microposts.count %> Posts | <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
+		    		<p><%= f.microposts.count %> Posts | <%= link_to "#{f.followers.count} Followers", followers_user_path(f) %> | <%= link_to "#{f.followed_users.count} Followers", following_user_path(f) %></p>
 		    	</ul>
 		    	<% end %>
 		    <% else %>
@@ -21,7 +21,7 @@
 			<p><i><%= @user.first_name %> <%= @user.last_name %></i></p>
 			<p><%= @user.microposts.count %> Posts | <%= render "users/follow_stats" %></p>
 		    <%= render 'users/follow_form' if signed_in? %>
-			<p><%= @user.user_bio %></p>
+			<small><%= @user.user_bio %></small>
 		</div>
 		<div id="trends">
 			<h4>Trends</h4>
