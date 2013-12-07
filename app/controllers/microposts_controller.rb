@@ -9,7 +9,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      redirect_to 'browse/home'
+      redirect_to root_url
     end
   end
 

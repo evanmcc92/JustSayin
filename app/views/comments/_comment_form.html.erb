@@ -1,0 +1,24 @@
+<div class="comment_form">
+	<div class="input-append">
+	<%= form_for([micropost, @comment]) do |c| %>
+
+	    <% if @comment.errors.any? %>
+		  <div id="error_explanation">
+		    <div class="alert alert-error">
+		      The form contains <%= pluralize(@comment.errors.count, "error") %>.
+		    </div>
+		    <ul>
+		    <% @comment.errors.full_messages.each do |msg| %>
+		      <li>* <%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+		  <% else %>
+			<h3><%= flash[:success] %></h3>
+		<% end %>
+
+		<%= c.text_field :content, :placeholder => "They said what?!", :class => "appendedInputButton" %>
+		<%= c.submit "Comment", class: "btn " %>
+	<% end %>
+	</div>
+</div>

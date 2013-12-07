@@ -22,8 +22,15 @@
 						</div>
 			    		<p>
 				    		<%= link_to user.user_name, user_path(user) %><br />
-				    		<i><%= user.first_name %> <%= user.last_name %></i><br />
-				    		<%= user.user_bio %>
+				    		<i><% if user.first_name %>
+				    			<%= user.first_name %>
+				    		<% end %>
+				    		<% if user.last_name %>
+				    			 <%= user.last_name %><br />
+				    		<% end %></i>
+							<% if user.user_bio %>
+								<small><%= user.user_bio %></small>
+							<% end %>
 			    		</p>
 			    	</blockquote>
 			    	<% end %>
@@ -33,11 +40,12 @@
 		</div>
 	</div>
 	<div class="left">
-		<div id="user_info">
-			<h4><%= link_to current_user.user_name, user_path(current_user) %></h4>
-			<p><i><%= current_user.first_name %> <%= current_user.last_name %></i></p>
-			<p><%= current_user.microposts.count %> Posts | <%=  link_to "#{current_user.followers.count} Followers", followers_user_path(current_user) %>  | <%=  link_to "#{current_user.followed_users.count} Following", following_user_path(current_user) %></p>
-			<p><%= current_user.user_bio %></p>
-		</div>
+	<div id="user_info">
+		<h4><%= link_to current_user.user_name, user_path(current_user) %></h4>
+		<p><i><%= current_user.first_name %> <%= current_user.last_name %></i></p>
+		<p><%= current_user.microposts.count %> Posts | <%= link_to "#{current_user.followers.count} Followers", followers_user_path(current_user) %> | <%= link_to "#{current_user.followed_users.count} Followers", following_user_path(current_user) %></p>
+			<% if current_user.user_bio %>
+				<p><small><%= current_user.user_bio %></small></p>
+			<% end %>
 	</div>
 </div>
