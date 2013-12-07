@@ -15,15 +15,20 @@ SocialLiving::Application.routes.draw do
     resources :comments, only: [:create, :destroy]
 
     member do
-        get :following, :followers
+      get :following, :followers
     end
   end
   
   resources :sessions, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+
   resources :microposts, only: [:create, :destroy] do
     resources :comments, only: [:create, :destroy]
+
+    member do
+      get :voteup, :votedown
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

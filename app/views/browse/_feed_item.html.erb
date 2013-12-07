@@ -2,14 +2,14 @@
 	<div class="posting">
 		<h5><%= link_to feed_item.user.user_name, feed_item.user %></h5>
 		<p><%= feed_item.content %></p>
-		<h5><%= time_ago_in_words(feed_item.created_at) %>
+		<h5><%= time_ago_in_words(feed_item.created_at) %> | <%= feed_item.up %> <%= link_to " Likes", voteup_micropost_path(feed_item.id), :class => "icon-thumbs-up"%> | <%= feed_item.down %> <%= link_to " Dislikes", votedown_micropost_path(feed_item.id), :class => "icon-thumbs-down"%>
 			<% if current_user?(feed_item.user) %>
 				| <%= link_to "", micropost_path(feed_item), :method => :delete, data: { confirm: "You sure?" }, :class=>"icon-trash" %>
 			<% end %>
-	</h5>
-	<% if feed_item.comments.any? %>
-		<%= render partial: 'browse/feed_item_comment', collection: feed_item.comments %>
-	<% end %>
-		<%= render "comments/comment_form" , micropost: feed_item%>
-	</h5>
+		</h5>
+		<% if feed_item.comments.any? %>
+			<%= render partial: 'browse/feed_item_comment', collection: feed_item.comments %>
+		<% end %>
+		<%= render "comments/comment_form" , micropost: feed_item %>
+	</div>
 </blockquote>

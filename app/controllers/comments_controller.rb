@@ -4,22 +4,22 @@ class CommentsController < ApplicationController
 
   def create
     @micropost = Micropost.find(params[:micropost_id])
-	@comment = @micropost.comments.build(comment_params)
+	  @comment = @micropost.comments.build(comment_params)
     @comment.micropost_id = @micropost.id
     @comment.user_id = current_user.id
     @user = User.find_by(params[:id])
 
     if @comment.save
-      redirect_to user_path(@user)
+      redirect_to :back
     else
       @feed_items_comments = []
-      redirect_to user_path(current_user)
+      redirect_to :back
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

@@ -1,24 +1,38 @@
 class MicropostsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy, :voteup, :votedown]
   before_action :correct_user,   only: :destroy
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    @micropost.up = 0
+    @micropost.down = 0
     if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
+      redirect_to :back
     else
       @feed_items = []
-      redirect_to root_url
+      redirect_to :back
     end
   end
 
   def destroy
     @micropost.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
-  def index
+  def voteup
+    @micropost = Micropost.find(params[:id])
+    @micropost.up = @micropost.up+1
+    if @micropost.save
+      redirect_to :back
+    end
+  end
+
+  def votedown
+    @micropost = Micropost.find(params[:id])
+    @micropost.down = @micropost.down+1
+    if @micropost.save
+      redirect_to :back
+    end
   end
 
   private

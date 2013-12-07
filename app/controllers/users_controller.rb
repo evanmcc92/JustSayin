@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         sign_in @user
-        redirect_to @user
+        redirect_to root_path
       else
         render :action => "new"
       end
@@ -41,14 +41,14 @@ class UsersController < ApplicationController
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followed_users
-    render 'show_follow'
+    redirect_to :back
   end
 
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers
-    render 'show_follow'
+    redirect_to :back
   end
 
   def destroy
