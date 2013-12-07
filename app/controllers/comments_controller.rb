@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
     @user = User.find_by(params[:id])
 
     if @comment.save
-      flash[:success] = "Comment created!"
       redirect_to user_path(@user)
     else
       @feed_items_comments = []
