@@ -3,9 +3,6 @@ class Micropost < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, :dependent => :destroy 
-
-  #likes
-  has_many :likes, dependent: :destroy
   
   default_scope :order => 'microposts.created_at DESC'
   

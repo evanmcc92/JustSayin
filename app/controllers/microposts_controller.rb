@@ -21,10 +21,8 @@ class MicropostsController < ApplicationController
 
   def voteup
     @micropost = Micropost.find(params[:id])
-    @micropost.up = @micropost.up+1
-    if @micropost.save
-      redirect_to :back
-    end
+    @micropost.increment!(:up)
+    redirect_to :back
   end
 
   def votedown
